@@ -1,0 +1,3 @@
+Antes de ejecutar los códigos, es necesario instalar las librerías en el entorno virtual del proyecto
+
+pip install google-play-scraper transformers datasets torch evaluate scikit-learn accelerate gradio fpdf
