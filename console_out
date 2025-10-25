@@ -1,0 +1,122 @@
+1. Cargando datos desde: review/reviews_test.csv
+Columnas detectadas: id, userName, date, score, text, sentimiento, appId, id_anotador, notas, thumbsUp
+✓ Columna de estrellas detectada: 'score'
+  Distribución de scores:
+score
+1    243
+2     57
+3    228
+4     21
+5    272
+Name: count, dtype: int64
+✓ Detectadas 1 apps diferentes
+⚠️  Se filtraron 2 filas inválidas
+
+Total de reseñas válidas: 819
+Distribución de sentimientos:
+sentimiento
+negativo    300
+neutro      233
+positivo    286
+Name: count, dtype: int64
+
+2. Cargando modelo desde: outputs/distilbert-mx-sent
+Dispositivo: cpu
+
+3. Evaluando modelo...
+
+Realizando predicciones en 52 lotes...
+Procesados 160/819 textos...
+Procesados 320/819 textos...
+Procesados 480/819 textos...
+Procesados 640/819 textos...
+Procesados 800/819 textos...
+
+4. Calculando métricas...
+
+============================================================
+MÉTRICAS DE EVALUACIÓN
+============================================================
+Accuracy:           0.7839
+
+Métricas Macro (promedio simple):
+  Precision:        0.7739
+  Recall:           0.7760
+  F1-Score:         0.7747
+
+Métricas Weighted (ponderadas por clase):
+  Precision:        0.7825
+  Recall:           0.7839
+  F1-Score:         0.7829
+
+------------------------------------------------------------
+REPORTE POR CLASE
+------------------------------------------------------------
+              precision    recall  f1-score   support
+
+    negativo     0.7902    0.7533    0.7713       300
+      neutro     0.6453    0.6481    0.6467       233
+    positivo     0.8863    0.9266    0.9060       286
+
+    accuracy                         0.7839       819
+   macro avg     0.7739    0.7760    0.7747       819
+weighted avg     0.7825    0.7839    0.7829       819
+
+------------------------------------------------------------
+MATRIZ DE CONFUSIÓN
+------------------------------------------------------------
+Predicho →       negativo      neutro    positivo
+Real ↓
+  negativo            226          63          11
+    neutro             59         151          23
+  positivo              1          20         265
+
+============================================================
+EJEMPLOS DE ERRORES (primeros 5)
+============================================================
+Total de errores: 177 de 819 (21.61%)
+
+Error 1:
+  Texto:      Por el momento todo bien. Sigan así.
+  Score:      5 estrellas
+  App:        com.instagram.android
+  Real:       positivo
+  Predicho:   neutro
+
+Error 2:
+  Texto:      es muy buena solo que da rabia que no te deje ver cuando alguien ve tu perfil no como tiktok que si ...
+  Score:      5 estrellas
+  App:        com.instagram.android
+  Real:       positivo
+  Predicho:   neutro
+
+Error 3:
+  Texto:      Gracias por banearme la cuenta 2 veces
+  Score:      1 estrellas
+  App:        com.instagram.android
+  Real:       negativo
+  Predicho:   positivo
+
+Error 4:
+  Texto:      me párese hasta ahora bien y no pasa nada
+  Score:      5 estrellas
+  App:        com.instagram.android
+  Real:       neutro
+  Predicho:   negativo
+
+Error 5:
+  Texto:      pésima aplicación últimamente...
+  Score:      5 estrellas
+  App:        com.instagram.android
+  Real:       neutro
+  Predicho:   negativo
+
+------------------------------------------------------------
+ANÁLISIS DE ERRORES POR SCORE
+------------------------------------------------------------
+score
+1    47
+2    25
+3    80
+4     5
+5    20
